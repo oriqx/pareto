@@ -21,7 +21,7 @@ You write Python. The SDK traces your operations into an IR graph. You call `pre
 ```python
 import uniqx
 
-client = uniqx.connect("api.oriqx.com:443")
+client = uniqx.connect("api.oriqx.com:443", api_key=os.environ["UNIQX_API_KEY"])
 module = my_workload(spec)             # traces — does not execute
 options = uniqx.preflight(module, client=client)
 print(options.summary())                # the Pareto table
@@ -36,36 +36,46 @@ result = uniqx.get(job_id, client=client)
 
 ## Install
 
-You need an API key from your hackathon organiser. The wheel lives behind a private index:
+Two steps before any code runs: **register**, then **export your API key**.
+
+### 1 · Register and get your API key
+
+1. Open [app.oriqx.com](https://app.oriqx.com) and register with the invite code your organiser handed you (format: `hackathon-<tier>-XXXXXXXX`).
+2. **Confirm registration via the email link** to activate the account — you cannot sign in until you click through.
+3. Sign in at [app.oriqx.com](https://app.oriqx.com), open the **API keys** page, click **Generate new key**. The key looks like `uxk_...` and is shown exactly once; copy it immediately.
+4. Use that key everywhere: in the wheel-index URL (below) and as the `api_key=` argument to `uniqx.connect()` in your code.
+
+Full walkthrough: [docs.oriqx.com/getting-started-hackathon](https://docs.oriqx.com/getting-started-hackathon).
+
+### 2 · Export the key and install
 
 ```bash
 export UNIQX_API_KEY="uxk_...your-key..."
+export UNIQX_GATEWAY="api.oriqx.com:443"
+
 python -m venv .venv && source .venv/bin/activate
 pip install --extra-index-url "https://uniqx:${UNIQX_API_KEY}@wheels.oriqx.com/simple/" uniqx
-pip install -e .                        # installs pareto + baseline extras
+pip install -e ".[all]"                  # pareto + baseline extras (PySCF, SciPy, ASE)
 ```
 
-Register and grab your key at [app.oriqx.com](https://app.oriqx.com). The full onboarding is at [docs.oriqx.com/getting-started-hackathon](https://docs.oriqx.com/getting-started-hackathon).
+The key authenticates two things: pulling the wheel from the private index (URL embedding above), and authenticating every gateway call (passed to `uniqx.connect(..., api_key=...)` in the starter notebooks).
 
-Set your gateway target once:
-
-```bash
-export UNIQX_GATEWAY="api.oriqx.com:443"
-```
+> Treat the key like a password. The install command embeds it in the URL — don't paste that line into shared logs or screenshots.
 
 ---
 
-## Three tracks
-
-Pick one. Or design your own — see [docs/tracks.md](docs/tracks.md) for the self-defined rubric.
+## Pick a track
 
 | Track | What you optimize | Starter |
 |---|---|---|
 | **DFT** | SCF energy + NMR shieldings for a small molecule | [tracks/dft/](tracks/dft/) |
 | **CFD** | 2-D Lattice-Boltzmann channel or cavity flow | [tracks/cfd/](tracks/cfd/) |
-| **MD** | Lennard-Jones argon NVE dynamics | [tracks/md/](tracks/md/) |
+| **MD** | Harmonic FCC crystal velocity-Verlet (LJ extension scaffolded) | [tracks/md/](tracks/md/) |
+| **Bring your own** | Any workload you can defend with a baseline | [examples/INDEX.md](examples/INDEX.md) |
 
-Each track ships a working notebook, a NumPy/PySCF baseline, and a problem-extension prompt. You are free to change the workload, the basis, the grid, the integrator — anything. The starter is a floor, not a ceiling.
+The three pre-defined tracks each ship a working notebook, a NumPy/PySCF baseline, and a problem-extension prompt. The fourth track is open-ended: 15 curated example notebooks (`examples/notebooks/`) plus the full gallery of 60+ at [app.oriqx.com/examples](https://app.oriqx.com/examples) give you starting points for chemistry, quantum simulation, optimization, ML, and finance. Pick what fits your team, bring a baseline, defend your Pareto choice.
+
+You are free to change the workload, the basis, the grid, the integrator — anything. The starter is a floor, not a ceiling.
 
 ---
 

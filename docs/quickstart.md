@@ -2,9 +2,14 @@
 
 From zero to a running starter notebook in five minutes.
 
-## 1. Get an API key
+## 1. Register and get your API key
 
-Register at [app.oriqx.com](https://app.oriqx.com) with the invite code your organiser handed you (format: `hackathon-<tier>-XXXXXXXX`). After email confirmation, generate an API key from the dashboard. Export it:
+The order matters. You cannot install or run anything until the account is activated and you have a key.
+
+1. Open [app.oriqx.com](https://app.oriqx.com) and **register** with the invite code your organiser handed you (format: `hackathon-<tier>-XXXXXXXX`).
+2. **Confirm via the email link** to activate the account. Sign-in is blocked until you click through.
+3. Sign in at [app.oriqx.com](https://app.oriqx.com), open the **API keys** page, click **Generate new key**. The key (`uxk_...`) is shown exactly once — copy it now.
+4. Export both:
 
 ```bash
 export UNIQX_API_KEY="uxk_...your-key..."
@@ -28,9 +33,18 @@ pip install -e ".[all]"
 Verify:
 
 ```python
+import os
 import uniqx
+
 print("uniqx", uniqx.__version__)
+client = uniqx.connect(
+    os.environ["UNIQX_GATEWAY"],
+    api_key=os.environ["UNIQX_API_KEY"],
+)
+print("connected:", client is not None)
 ```
+
+If `connect()` raises `UNAUTHENTICATED`, your key is wrong, expired, or your account is not yet email-confirmed. Go back to step 1.
 
 ## 3. Run a starter notebook
 

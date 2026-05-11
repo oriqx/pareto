@@ -29,3 +29,4 @@ Thumbs.db
 
 # Local-only logs
 *.log
+/.ruff_cache/

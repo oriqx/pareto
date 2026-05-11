@@ -1,20 +1,29 @@
 # FAQ
 
-## Install & auth
+## Register / install / auth
+
+**What's the full sign-up flow?**
+Three steps, in order: (1) register at [app.oriqx.com](https://app.oriqx.com) with the invite code your organiser gave you (`hackathon-<tier>-XXXXXXXX`); (2) confirm the activation email; (3) sign in, open **API keys**, click **Generate new key**, copy the `uxk_...` key. The key is shown only once.
+
+**Where do I get an invite code?**
+From your hackathon organiser. Without one you cannot register at `app.oriqx.com`.
+
+**The "Generate new key" button is missing or disabled.**
+Some account tiers have keys issued centrally rather than self-service. Ask your organiser to issue you a key.
 
 **`pip install` says 401 Unauthorized.**
 Your `UNIQX_API_KEY` is wrong, expired, or not exported in the current shell. Re-export it and re-run. The install URL embeds the key — be careful not to paste it into shared logs.
-
-**Where do I get an invite code?**
-From your hackathon organiser. The format is `hackathon-<tier>-XXXXXXXX`. Without one you cannot register at `app.oriqx.com`.
 
 **My budget shows $0.**
 Either you have not redeemed an invite code, or your tier has exhausted its budget. The dashboard shows the remaining figure. Ping your organiser.
 
 ## Connecting
 
+**`connect()` raises `UNAUTHENTICATED` or `PERMISSION_DENIED`.**
+You did not pass `api_key=` to `uniqx.connect()`, or the key is wrong. The starter notebooks read it from `UNIQX_API_KEY`; confirm the env var is set in the shell that launched Jupyter (not just in `.bashrc`).
+
 **`connect()` raises `UNAVAILABLE`.**
-Confirm `UNIQX_GATEWAY` is set. Production is `api.oriqx.com:443`, staging is `dev-api.oriqx.com:443`. If you're running a local gateway, it's typically `localhost:50050`.
+Confirm `UNIQX_GATEWAY` is set. Production is `api.oriqx.com:443`, staging is `dev-api.oriqx.com:443`. If you're running a local gateway, it's typically `localhost:50050` (no API key required for the local gateway).
 
 **The notebook submits but `get()` times out.**
 Default timeout is 300 s. For large workloads pass `timeout=None` or a longer value: `uniqx.get(job_id, client=client, timeout=600)`.

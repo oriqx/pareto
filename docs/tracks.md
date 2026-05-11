@@ -61,7 +61,7 @@ Three pre-scaffolded tracks plus a fourth "design your own" lane.
 
 ---
 
-## Design your own
+## Bring your own
 
 You may submit against a workload that is not one of the three tracks above. To qualify:
 
@@ -70,3 +70,12 @@ You may submit against a workload that is not one of the three tracks above. To 
 3. **Use `uniqx` for the heavy lifting** — at least one module must be traced with `@uniqx.to_module` and submitted through `preflight()` → `submit()`. A submission that doesn't engage the SDK doesn't engage the hackathon.
 
 Custom workloads are scored on the same four criteria as the pre-defined tracks. Originality of the workload itself counts toward Creativity. The bar for Robustness is higher because the judges have no prior reference run to compare against — show your homework.
+
+### Starting points
+
+The fastest way to bootstrap a custom workload is to fork one of the curated examples:
+
+- **15 examples in this repo** — see [`examples/INDEX.md`](../examples/INDEX.md). Covers foundational tracing, chemistry, quantum simulation, optimization, ML, and two real-world demonstrators.
+- **Full gallery (60+)** — [app.oriqx.com/examples](https://app.oriqx.com/examples). Sign in with your hackathon account to browse and open any notebook in Studio.
+
+Every example follows the same `problem → trace → preflight → run → oracle-compare` skeleton — you replace the problem, keep the skeleton, and you have a runnable submission.

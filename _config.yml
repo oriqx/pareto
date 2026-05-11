@@ -32,3 +32,4 @@ exclude:
   - tracks/md/harmonic_step.py
   - tracks/md/lj_forces.py
   - docs/results.schema.json
+  - examples/notebooks/
