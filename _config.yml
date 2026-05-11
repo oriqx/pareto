@@ -1,0 +1,34 @@
+title: pareto
+description: ORIQX hackathon track — algorithm × heterogeneous hardware co-design.
+theme: jekyll-theme-cayman
+
+plugins:
+  - jekyll-relative-links
+  - jekyll-optional-front-matter
+  - jekyll-readme-index
+  - jekyll-default-layout
+  - jekyll-titles-from-headings
+
+relative_links:
+  enabled: true
+  collections: true
+
+readme_index:
+  enabled: true
+  remove_originals: false
+
+# Exclude scaffolding that shouldn't appear in the rendered site.
+exclude:
+  - LICENSE
+  - .gitignore
+  - .python-version
+  - pyproject.toml
+  - .github/
+  - templates/submission/preflight_log.txt
+  - templates/submission/results.json
+  - templates/submission/submission.ipynb
+  - tracks/*/starter.ipynb
+  - tracks/*/baseline.py
+  - tracks/md/harmonic_step.py
+  - tracks/md/lj_forces.py
+  - docs/results.schema.json
