@@ -51,7 +51,6 @@ Full walkthrough: [docs.oriqx.com/getting-started-hackathon](https://docs.oriqx.
 
 ```bash
 export UNIQX_API_KEY="uxk_...your-key..."
-export UNIQX_GATEWAY="api.oriqx.com:443"
 
 python -m venv .venv && source .venv/bin/activate
 pip install --extra-index-url "https://uniqx:${UNIQX_API_KEY}@wheels.oriqx.com/simple/" uniqx
@@ -60,7 +59,21 @@ pip install -e ".[all]"                  # pareto + baseline extras (PySCF, SciP
 
 The key authenticates two things: pulling the wheel from the private index (URL embedding above), and authenticating every gateway call (passed to `uniqx.connect(..., api_key=...)` in the starter notebooks).
 
-> Treat the key like a password. The install command embeds it in the URL — don't paste that line into shared logs or screenshots.
+Your organiser will tell you the gateway target. Set it in the same shell when you have it:
+
+```bash
+export UNIQX_GATEWAY="<host:port your organiser gave you>"
+```
+
+> Treat the API key like a password. The install command embeds it in the URL — don't paste that line into shared logs or screenshots.
+
+---
+
+## Teams
+
+Solo entries are allowed. **Teams of 2–4 are recommended** — algorithm × hardware co-design rewards mixed skills (numerical, systems, domain knowledge), and the Pareto reasoning is easier when two people argue over the table than when one person stares at it. Maximum team size: 5.
+
+Every team member's name goes into `results.json.members`. Pick one *team handle* (lowercase, hyphen-separated, e.g. `pareto-pilots`) that you'll use for the submission directory name and the PR title.
 
 ---
 

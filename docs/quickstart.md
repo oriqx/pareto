@@ -9,14 +9,19 @@ The order matters. You cannot install or run anything until the account is activ
 1. Open [app.oriqx.com](https://app.oriqx.com) and **register** with the invite code your organiser handed you (format: `hackathon-<tier>-XXXXXXXX`).
 2. **Confirm via the email link** to activate the account. Sign-in is blocked until you click through.
 3. Sign in at [app.oriqx.com](https://app.oriqx.com), open the **API keys** page, click **Generate new key**. The key (`uxk_...`) is shown exactly once — copy it now.
-4. Export both:
+4. Export the key:
 
 ```bash
 export UNIQX_API_KEY="uxk_...your-key..."
-export UNIQX_GATEWAY="api.oriqx.com:443"
 ```
 
-> Treat the key like a password. Never paste the install command into shared logs or screenshots — it embeds the key.
+Your organiser will give you the gateway target — set it in the same shell when you have it:
+
+```bash
+export UNIQX_GATEWAY="<host:port your organiser gave you>"
+```
+
+> Treat the API key like a password. Never paste the install command into shared logs or screenshots — it embeds the key.
 
 ## 2. Clone and install
 
@@ -38,8 +43,8 @@ import uniqx
 
 print("uniqx", uniqx.__version__)
 client = uniqx.connect(
-    os.environ["UNIQX_GATEWAY"],
-    api_key=os.environ["UNIQX_API_KEY"],
+    os.environ.get("UNIQX_GATEWAY", "localhost:50050"),
+    api_key=os.environ.get("UNIQX_API_KEY"),
 )
 print("connected:", client is not None)
 ```
