@@ -84,6 +84,7 @@ Every team member's name goes into `results.json.members`. Pick one *team handle
 | **DFT** | SCF energy + NMR shieldings for a small molecule | [tracks/dft/](tracks/dft/) |
 | **CFD** | 2-D Lattice-Boltzmann channel or cavity flow | [tracks/cfd/](tracks/cfd/) |
 | **MD** | Harmonic FCC crystal velocity-Verlet (LJ extension scaffolded) | [tracks/md/](tracks/md/) |
+| **AIMD** | Ab-initio Molecular Dynamics using RHF and velocity-Verlet | [tracks/md/](tracks/AIMD/) |
 | **Bring your own** | Any workload you can defend with a baseline | [examples/INDEX.md](examples/INDEX.md) |
 
 The three pre-defined tracks each ship a working notebook, a NumPy/PySCF baseline, and a problem-extension prompt. The fourth track is open-ended: 15 curated example notebooks (`examples/notebooks/`) plus the full gallery of 60+ at [app.oriqx.com/examples](https://app.oriqx.com/examples) give you starting points for chemistry, quantum simulation, optimization, ML, and finance. Pick what fits your team, bring a baseline, defend your Pareto choice.
