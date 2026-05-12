@@ -1,4 +1,4 @@
-# Ab-Initio Molecular Dynamics (AIMD) Challenge
+# Track: Ab-Initio Molecular Dynamics (AIMD)
 
 ---
 
