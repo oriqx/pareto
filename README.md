@@ -83,6 +83,7 @@ Every team member's name goes into `results.json.members`. Pick one *team handle
 |---|---|---|
 | **DFT** | SCF energy + NMR shieldings for a small molecule | [tracks/dft/](tracks/dft/) |
 | **CFD** | 2-D Lattice-Boltzmann channel or cavity flow | [tracks/cfd/](tracks/cfd/) |
+| **AIMD** | Ab-initio Molecular Dynamics using RHF and velocity-Verlet | [tracks/md/](tracks/AIMD/) |
 | **MD** | Harmonic FCC crystal velocity-Verlet (LJ extension scaffolded) | [tracks/md/](tracks/md/) |
 | **Bring your own** | Any workload you can defend with a baseline | [examples/INDEX.md](examples/INDEX.md) |
 
