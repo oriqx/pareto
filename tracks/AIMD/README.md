@@ -4,7 +4,7 @@
 
 ## 1. Challenge Objective
 
-You are given a working Python implementation of **Ab Initio Molecular Dynamics (AIMD)** for the water molecule, built from scratch using NumPy and Scipy. The simulation runs a Born-Oppenheimer MD trajectory: at each timestep, it solves the Restricted Hartree-Fock (RHF) Self-Consistent Field (SCF) equations to obtain the electronic energy and forces, then propagates the nuclei using the Velocity Verlet algorithm.
+You are given a working Python implementation of **Ab Initio Molecular Dynamics (AIMD)** for the water molecule (H2O), built from scratch using NumPy and Scipy. The simulation runs a Born-Oppenheimer MD trajectory: at each timestep, it solves the Restricted Hartree-Fock (RHF) Self-Consistent Field (SCF) equations to obtain the electronic energy and forces, then propagates the nuclei using the Velocity Verlet algorithm.
 
 The program is correct — but it is entirely sequential, CPU-only, and not portable across hardware.
 
