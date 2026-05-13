@@ -1,3 +1,4 @@
+# Copyright (c) 2026 ORIQX AG. MIT licensed.
 """
 AIMD simulation of H2O — entry point.
 
