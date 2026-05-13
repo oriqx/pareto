@@ -57,7 +57,7 @@ The MD recurrence uses Hermite Gaussian expansion coefficients $E^{ij}_t$ and au
 
 The most expensive step: a rank-4 tensor of $N_\text{basis}^4$ elements.
 
-$$g_{\mu\nu\lambda\sigma} = (\mu\nu|\lambda\sigma) = \int\int \frac{\chi_\mu^*(\mathbf{r}_1)\chi_\nu(\mathbf{r}_1)\, \chi_\lambda^*(\mathbf{r}_2)\chi_\sigma(\mathbf{r}_2)}{|\mathbf{r}_1 - \mathbf{r}_2|}\, d\mathbf{r}_1\, d\mathbf{r}_2$$
+$$g_{\mu\nu\lambda\sigma} = (\mu\nu|\lambda\sigma) = \int\int \frac{\chi_\mu^*(\mathbf{r}_1)\chi_\nu(\mathbf{r}_1)}\, \chi_\lambda^*(\mathbf{r}_2)\chi_\sigma(\mathbf{r}_2)}{|\mathbf{r}_1 - \mathbf{r}_2|}\, d\mathbf{r}_1\, d\mathbf{r}_2$$
 
 For STO-3G H$_2$O this is a $7^4 = 2401$-element tensor. Each element is a multi-center integral evaluated via the MD recursion.
 
