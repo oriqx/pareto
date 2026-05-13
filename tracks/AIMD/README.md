@@ -183,6 +183,10 @@ A table comparing your ORIQX implementation against the reference NumPy code for
 
 Acceptable tolerance: $|\Delta E| < 10^{-5}$ Ha per step.
 
+Reference values: 
+
+H₂O at STO-3G: RHF total energy ≈ −74.96 Ha (PySCF reference). The starter checks within 5 mHa.
+
 ---
 
 ## Resources
