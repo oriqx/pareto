@@ -23,7 +23,7 @@ The program lives across six files: `run_h2o.py` (entry point), `aimd.py` (integ
 | 1 | One-electron integrals | $S_{\mu\nu},\; T_{\mu\nu},\; V_{\mu\nu} \ \Rightarrow\ H = T + V$ |
 | 2 | Two-electron integrals (ERI) | $g_{\mu\nu\lambda\sigma} = (\mu\nu\|\lambda\sigma)$, rank-4 tensor $\mathcal{O}(N^4)$ |
 | 3 | RHF SCF | $\mathbf{F}\mathbf{C} = \mathbf{S}\mathbf{C}\boldsymbol{\varepsilon}$, iterate until $\|E_\text{new}-E_\text{prev}\| < \tau$ |
-| 4 | Forces (finite differences) | $F_{i,d} \approx -\dfrac{E(\mathbf{R}+h\hat{e}_{id})-E(\mathbf{R}-h\hat{e}_{id})}{2h}$ |
+| 4 | Forces (finite differences) | $F_{i,d} \approx - \frac{E(\mathbf{R} + h\,\hat{e}_{i,d}) - E(\mathbf{R} - h\,\hat{e}_{i,d})}{2h}$ |
 | 5 | Velocity Verlet MD | $\mathbf{R}(t{+}\Delta t) = \mathbf{R} + \mathbf{v}\Delta t + \tfrac{1}{2}\mathbf{M}^{-1}\mathbf{F}\Delta t^2$ |
 
 ---
