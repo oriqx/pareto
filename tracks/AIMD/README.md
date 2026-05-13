@@ -16,7 +16,7 @@ This is not about rewriting the physics. It is about expressing the *same comput
 
 ## 2. AIMD Program: Steps and Mathematics
 
-The program lives across six files: `run_h2o.py` (entry point), `aimd.py` (integrator), `scf.py` (electronic structure), `integrals.py` (McMurchie-Davidson engine), `basis.py` (STO-3G basis), `constants.py` (physical constants). The basis construction (`basis.py`) is provided as-is — participants do not need to decompose it. The five computational stages to rewrite are:
+The program lives across six files: `baseline.py` (entry point), `aimd.py` (integrator), `scf.py` (electronic structure), `integrals.py` (McMurchie-Davidson engine), `basis.py` (STO-3G basis), `constants.py` (physical constants). The basis construction (`basis.py`) is provided as-is — participants do not need to decompose it. The five computational stages to rewrite are:
 
 | Stage | Description | Key operation |
 |---|---|---|
