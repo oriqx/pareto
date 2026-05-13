@@ -8,7 +8,7 @@ You are given a working Python implementation of **Ab Initio Molecular Dynamics 
 
 The program is correct — but it is entirely sequential, CPU-only, and not portable across hardware.
 
-**Your mission:** Rewrite this program using the **ORIQX primitives** (See [docs/ORIQX_PRIMITIVES.md](docs/ORIQX_PRIMITIVES.md)) by decomposing each computational step into hardware-agnostic operations. ORIQX will then automatically route, compile, and execute those primitives on the most efficient available hardware — CPU, GPU, TPU, QPU, or hybrid combinations — without you changing a single line of your submission code.
+**Your mission:** Rewrite this program using the **ORIQX primitives** (See [docs/ORIQX_PRIMITIVES.md](pareto/docs/ORIQX_PRIMITIVES.md)) by decomposing each computational step into hardware-agnostic operations. ORIQX will then automatically route, compile, and execute those primitives on the most efficient available hardware — CPU, GPU, TPU, QPU, or hybrid combinations — without you changing a single line of your submission code.
 
 This is not about rewriting the physics. It is about expressing the *same computation* in a form that a platform can optimize, schedule, and dispatch across heterogeneous hardware.
 
