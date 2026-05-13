@@ -4,7 +4,7 @@
 
 ## 1. Challenge Objective
 
-You are given a working Python implementation of **Ab Initio Molecular Dynamics (AIMD)** for the water molecule (H2O), built from scratch using NumPy and Scipy. The simulation runs a Born-Oppenheimer MD trajectory: at each timestep, it solves the Restricted Hartree-Fock (RHF) Self-Consistent Field (SCF) equations to obtain the electronic energy and forces, then propagates the nuclei using the Velocity Verlet algorithm.
+You are given a working Python implementation of **Ab Initio Molecular Dynamics (AIMD)** for the water molecule ($H_2O$), built from scratch using NumPy and Scipy. The simulation runs a Born-Oppenheimer MD trajectory: at each timestep, it solves the Restricted Hartree-Fock (RHF) Self-Consistent Field (SCF) equations to obtain the electronic energy and forces, then propagates the nuclei using the Velocity Verlet algorithm.
 
 The program is correct — but it is entirely sequential, CPU-only, and not portable across hardware.
 
@@ -23,7 +23,7 @@ The program lives across six files: `run_h2o.py` (entry point), `aimd.py` (integ
 | 1 | One-electron integrals | $S_{\mu\nu},\; T_{\mu\nu},\; V_{\mu\nu} \ \Rightarrow\ H = T + V$ |
 | 2 | Two-electron integrals (ERI) | $g_{\mu\nu\lambda\sigma} = (\mu\nu\|\lambda\sigma)$, rank-4 tensor $\mathcal{O}(N^4)$ |
 | 3 | RHF SCF | $\mathbf{F}\mathbf{C} = \mathbf{S}\mathbf{C}\boldsymbol{\varepsilon}$, iterate until $\|E_\text{new}-E_\text{prev}\| < \tau$ |
-| 4 | Forces (finite differences) | $F_{i,d} \approx - \frac{E(\mathbf{R} + h\,\hat{e}_{i,d}) - E(\mathbf{R} - h\,\hat{e}_{i,d})}{2h}$ |
+| 4 | Forces (finite differences) | $F \approx -\dfrac{E(\mathbf{R}+\Delta x) - E(\mathbf{R}-\Delta x)}{2\Delta x}$ |
 | 5 | Velocity Verlet MD | $\mathbf{R}(t{+}\Delta t) = \mathbf{R} + \mathbf{v}\Delta t + \tfrac{1}{2}\mathbf{M}^{-1}\mathbf{F}\Delta t^2$ |
 
 ---
@@ -59,7 +59,7 @@ The most expensive step: a rank-4 tensor of $N_\text{basis}^4$ elements.
 
 $$g_{\mu\nu\lambda\sigma}=(\mu\nu|\lambda\sigma)=\iint\frac{\chi_\mu(\mathbf{r}_1)\chi_\nu(\mathbf{r}_1)\chi_\lambda(\mathbf{r}_2)\chi_\sigma(\mathbf{r}_2)}{|\mathbf{r}_1 - \mathbf{r}_2|}\, d\mathbf{r}_1 \, d\mathbf{r}_2$$
 
-For STO-3G H$_2$O this is a $7^4 = 2401$-element tensor. Each element is a multi-center integral evaluated via the MD recursion.
+For STO-3G $H_2O$ this is a $7^4 = 2401$-element tensor. Each element is a multi-center integral evaluated via the MD recursion.
 
 **Code:** 
 
@@ -108,9 +108,9 @@ where $E_\text{nuc} = \sum_{A<B} Z_A Z_B / R_{AB}$ is the nuclear repulsion ener
 
 Analytical gradients are not implemented. Instead, atomic forces are estimated by central finite differences over the SCF energy surface:
 
-$$F_{i,d} = -\frac{\partial E}{\partial R_{i,d}} \approx -\frac{E(\mathbf{R} + h\,\hat{e}_{i,d}) - E(\mathbf{R} - h\,\hat{e}_{i,d})}{2h}$$
+$$F_{id} = -\frac{\partial E}{\partial R_{i,d}} \approx -\frac{E(\mathbf{R_{i,d}} + \Delta x) - E(\mathbf{R_{i,d}} - \Delta x)}{2\Delta x}$$
 
-for each atom $i$ and Cartesian direction $d \in \{x, y, z\}$. Each call requires $2 \times N_\text{atoms} \times 3$ full SCF calculations — for H$_2$O, that is **18 SCF calls per step**.
+for each atom $i$ and Cartesian direction $d \in \{x, y, z\}$. Each call requires $2 \times N_\text{atoms} \times 3$ full SCF calculations — for $H_2O$, that is **18 SCF calls per step**.
 
 **Code:** 
 
@@ -174,7 +174,7 @@ UNIQX_GATEWAY=<provided-gateway> UNIQX_API_KEY=<provided-key> python aimd_oriqx.
 
 ### Numerical Validation
 
-A table comparing your ORIQX implementation against the reference NumPy code for the first 5 MD steps of H$_2$O:
+A table comparing your ORIQX implementation against the reference NumPy code for the first 5 MD steps of $H_2O$:
 
 | Step | $E_\text{ref}$ (Ha) | $E_\text{ORIQX}$ (Ha) | $\Delta E$ | O-H1 (Å) | O-H2 (Å) |
 |---|---|---|---|---|---|
