@@ -39,11 +39,12 @@ $$S_{\mu\nu} = \langle \chi_\mu | \chi_\nu \rangle = \int \chi_\mu^*(\mathbf{r})
 $$T_{\mu\nu} = \langle \chi_\mu | -\tfrac{1}{2}\nabla^2 | \chi_\nu \rangle$$
 
 **Nuclear attraction matrix:**
-$$V_{\mu\nu} = \sum_A \left\langle \chi_\mu \left| -\frac{Z_A}{|\mathbf{r} - \mathbf{R}_A|} \right| \chi_\nu \right\rangle$$
+
+$$V_{\mu\nu}=\sum_A\langle\chi_\mu|-\frac{Z_A}{|\mathbf{r}-\mathbf{R}_A|}|\chi_\nu\rangle$$
 
 The core Hamiltonian is $H_{\mu\nu} = T_{\mu\nu} + V_{\mu\nu}$.
 
-The MD recurrence uses Hermite Gaussian expansion coefficients $E^{ij}_t$ and auxiliary Coulomb integrals $R^{tuv}_n$ (involving the Boys function $F_n(T)$).
+The MD recurrence uses Hermite Gaussian expansion coefficients $E^{ij}_t$ and auxiliary Coulomb integrals $R^{tuv}_n$ (involving the Boys function $F_n(T)$ ).
 
 **Code:** 
 
