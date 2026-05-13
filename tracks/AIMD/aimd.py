@@ -81,6 +81,10 @@ def aimd(atoms_ang, masses_amu, n_electrons, n_steps=5, dt_fs=0.5,
     return trajectory, energies
 
 
+###################################################################################
+################################  NO DECOMPOSE    #################################
+###################################################################################
+
 def _write_frame(f, symbols, pos, e, step):
     pos_ang = pos * BOHR_TO_ANG
     f.write(f"{len(symbols)}\n")
