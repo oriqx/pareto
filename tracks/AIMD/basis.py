@@ -1,3 +1,4 @@
+# Copyright (c) 2026 ORIQX AG. MIT licensed.
 """
 STO-3G basis set loader and basis function builder.
 
