@@ -1,3 +1,4 @@
+# Copyright (c) 2026 ORIQX AG. MIT licensed.
 """Physical constants and element data."""
 
 BOHR_TO_ANG   = 0.529177
