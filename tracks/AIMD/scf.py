@@ -1,3 +1,4 @@
+# Copyright (c) 2026 ORIQX AG. MIT licensed.
 """
 RHF SCF and finite-difference force computation.
 
