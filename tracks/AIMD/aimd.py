@@ -1,3 +1,4 @@
+# Copyright (c) 2026 ORIQX AG. MIT licensed.
 """
 AIMD velocity Verlet integrator and trajectory utilities.
 
