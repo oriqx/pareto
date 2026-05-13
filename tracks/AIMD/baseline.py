@@ -27,12 +27,7 @@ if __name__ == "__main__":
     init_vel[1] = [0.0,  v_bend, 0.0]
     init_vel[2] = [0.0, -v_bend, 0.0]
 
-    # Maxwell-Boltzmann at 300 K (alternative):
-    # traj, energies = aimd(atoms, masses, n_electrons, n_steps=50, dt_fs=0.5,
-    #                       temperature_K=300, seed=42,
-    #                       xyz_file="aimd_h2o_trajectory.xyz")
-
-    traj, energies = aimd(atoms, masses, n_electrons, n_steps=50, dt_fs=0.5,
+    traj, energies = aimd(atoms, masses, n_electrons, n_steps=10, dt_fs=0.5,
                           init_velocities=init_vel,
                           xyz_file="aimd_h2o_trajectory.xyz")
 
