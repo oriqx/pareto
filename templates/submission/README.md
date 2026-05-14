@@ -29,6 +29,12 @@ If you overrode the recommendation, say why.
 
 ## How to reproduce
 
+**In Studio (recommended):** open `submission.ipynb` in your hosted
+workspace. `uniqx` is pre-installed and `UNIQX_API_KEY` is already
+exported in the pod — run all cells.
+
+**Locally:**
+
 ```bash
 export UNIQX_API_KEY="..." UNIQX_GATEWAY="..."
 pip install --extra-index-url "https://uniqx:${UNIQX_API_KEY}@wheels.oriqx.com/simple/" uniqx

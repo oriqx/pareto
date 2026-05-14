@@ -2,6 +2,8 @@
 
 Three pre-scaffolded tracks plus a fourth "design your own" lane.
 
+All four run in **Studio** with no install (browser, `uniqx` pre-installed, key pre-injected) — or locally via the [quickstart](quickstart.md) if you prefer your own Python environment.
+
 ## DFT — density functional theory
 
 **Starter problem**: H₂O at STO-3G. Compute the SCF ground-state energy and the isotropic NMR shielding tensors.

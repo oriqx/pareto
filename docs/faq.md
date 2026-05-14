@@ -3,13 +3,13 @@
 ## Register / install / auth
 
 **What's the full sign-up flow?**
-Three steps, in order: (1) register at [app.oriqx.com](https://app.oriqx.com) with the invite code your organiser gave you (`hackathon-<tier>-XXXXXXXX`); (2) confirm the activation email; (3) sign in, open **API keys**, click **Generate new key**, copy the `uxk_...` key. The key is shown only once.
+Three steps, in order: (1) register at [app.oriqx.com](https://app.oriqx.com) with the invite code your organiser gave you (`hackathon-<tier>-XXXXXXXX`) — a default API key is auto-minted; (2) confirm the activation email; (3) sign in. If you'll use **Studio** (browser), you're done — the key is already injected into the workspace. If you'll use the SDK locally, open **Downloads** in the sidebar and click **"Lost your key? Regenerate"** to reveal a fresh key (`uxk_...`) once.
 
 **Where do I get an invite code?**
 From your hackathon organiser. Without one you cannot register at `app.oriqx.com`.
 
-**The "Generate new key" button is missing or disabled.**
-Some account tiers have keys issued centrally rather than self-service. Ask your organiser to issue you a key.
+**Where do I find my API key?**
+Two places, depending on path. In **Studio**, the key is already exported as `UNIQX_API_KEY` inside the workspace pod — run `echo $UNIQX_API_KEY` in the terminal to confirm. For local SDK use, open the **Downloads** page (sidebar) and click **"Lost your key? Regenerate"**; the new key is shown once. The legacy `/api-keys` page is admin-only now and is not where regular hackathon users get a key.
 
 **`pip install` says 401 Unauthorized.**
 Your `UNIQX_API_KEY` is wrong, expired, or not exported in the current shell. Re-export it and re-run. The install URL embeds the key — be careful not to paste it into shared logs.

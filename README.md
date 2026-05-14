@@ -40,9 +40,9 @@ Two steps before any code runs: **register**, then **export your API key**.
 
 ### 1 · Register and get your API key
 
-1. Open [app.oriqx.com](https://app.oriqx.com) and register with the invite code your organiser handed you (format: `hackathon-<tier>-XXXXXXXX`).
+1. Open [app.oriqx.com](https://app.oriqx.com) and register with the invite code your organiser handed you (format: `hackathon-<tier>-XXXXXXXX`). A default API key is minted for you automatically — you'll reveal it in step 3.
 2. **Confirm registration via the email link** to activate the account — you cannot sign in until you click through.
-3. Sign in at [app.oriqx.com](https://app.oriqx.com), open the **API keys** page, click **Generate new key**. The key looks like `uxk_...` and is shown exactly once; copy it immediately.
+3. Sign in at [app.oriqx.com](https://app.oriqx.com), open the **Downloads** page in the sidebar, and click **"Lost your key? Regenerate"**. The new key (`uxk_...`) is shown exactly once — copy it immediately. Regenerating rotates the auto-minted default; any open Studio workspaces will need a refresh to pick up the new value.
 4. Use that key everywhere: in the wheel-index URL (below) and as the `api_key=` argument to `uniqx.connect()` in your code.
 
 Full walkthrough: [docs.oriqx.com/getting-started-hackathon](https://docs.oriqx.com/getting-started-hackathon).
@@ -66,6 +66,8 @@ export UNIQX_GATEWAY="<host:port your organiser gave you>"
 ```
 
 > Treat the API key like a password. The install command embeds it in the URL — don't paste that line into shared logs or screenshots.
+
+> **Prefer the browser?** Open **Studio** from the dashboard instead. The hosted workspace ships with `uniqx` pre-installed and your `UNIQX_API_KEY` already injected as an env var — you can skip step 1.3 and step 2, clone this repo from the Studio terminal, and go straight to `jupyter lab tracks/dft/starter.ipynb`.
 
 ---
 

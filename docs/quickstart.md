@@ -6,9 +6,11 @@ From zero to a running starter notebook in five minutes.
 
 The order matters. You cannot install or run anything until the account is activated and you have a key.
 
-1. Open [app.oriqx.com](https://app.oriqx.com) and **register** with the invite code your organiser handed you (format: `hackathon-<tier>-XXXXXXXX`).
+> **Prefer the browser?** Skip steps 1.3 and 2 — open **Studio** from the dashboard. The hosted workspace already has `uniqx` installed and your `UNIQX_API_KEY` injected as an env var. Clone this repo from the Studio terminal and jump to step 3.
+
+1. Open [app.oriqx.com](https://app.oriqx.com) and **register** with the invite code your organiser handed you (format: `hackathon-<tier>-XXXXXXXX`). A default API key is minted for you automatically when you sign up.
 2. **Confirm via the email link** to activate the account. Sign-in is blocked until you click through.
-3. Sign in at [app.oriqx.com](https://app.oriqx.com), open the **API keys** page, click **Generate new key**. The key (`uxk_...`) is shown exactly once — copy it now.
+3. Sign in at [app.oriqx.com](https://app.oriqx.com), open the **Downloads** page in the sidebar, and click **"Lost your key? Regenerate"**. The new key (`uxk_...`) is shown exactly once — copy it now. (Regenerating rotates the auto-minted default; any Studio workspaces already running on the old key will need a refresh.)
 4. Export the key:
 
 ```bash
