@@ -19,9 +19,10 @@ The platform is hardware-agnostic and vendor-agnostic. Your code does not name a
 You write Python. The SDK traces your operations into an IR graph. You call `preflight()`, read the option table, and pick where on the frontier you want to land:
 
 ```python
+import os
 import uniqx
 
-client = uniqx.connect("api.oriqx.com:443", api_key=os.environ["UNIQX_API_KEY"])
+client = uniqx.connect(os.environ["UNIQX_GATEWAY"], api_key=os.environ.get("UNIQX_API_KEY"))
 module = my_workload(spec)             # traces — does not execute
 options = uniqx.preflight(module, client=client)
 print(options.summary())                # the Pareto table
