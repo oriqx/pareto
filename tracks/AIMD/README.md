@@ -54,7 +54,7 @@ The MD recurrence uses Hermite Gaussian expansion coefficients $E^{ij}_t$ and au
 
 ---
 
-### Stage 3 — Two-Electron Repulsion Integrals (ERI Tensor)
+### Stage 2 — Two-Electron Repulsion Integrals (ERI Tensor)
 
 The most expensive step: a rank-4 tensor of $N_\text{basis}^4$ elements.
 
@@ -70,7 +70,7 @@ For STO-3G $H_2O$ this is a $7^4 = 2401$-element tensor. Each element is a multi
 
 ---
 
-### Stage 4 — RHF Self-Consistent Field (SCF)
+### Stage 3 — RHF Self-Consistent Field (SCF)
 
 The SCF is an iterative fixed-point algorithm to solve the Roothaan-Hall equations $\mathbf{F}\mathbf{C} = \mathbf{S}\mathbf{C}\boldsymbol{\varepsilon}$.
 
@@ -105,7 +105,7 @@ where $E_\text{nuc} = \sum_{A<B} Z_A Z_B / R_{AB}$ is the nuclear repulsion ener
 
 ---
 
-### Stage 5 — Force Computation (Finite Differences)
+### Stage 4 — Force Computation (Finite Differences)
 
 Analytical gradients are not implemented. Instead, atomic forces are estimated by central finite differences over the SCF energy surface:
 
@@ -119,7 +119,7 @@ for each atom $i$ and Cartesian direction $d \in \{x, y, z\}$. Each call require
 
 ---
 
-### Stage 6 — Velocity Verlet MD Integration
+### Stage 5 — Velocity Verlet MD Integration
 
 Born-Oppenheimer MD propagates nuclei classically on the ground-state energy surface. The Velocity Verlet algorithm is time-reversible and symplectic:
 
