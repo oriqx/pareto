@@ -111,7 +111,7 @@ Analytical gradients are not implemented. Instead, atomic forces are estimated b
 
 $$F_{id} = -\frac{\partial E}{\partial R_{i,d}} \approx -\frac{E(\mathbf{R_{i,d}} + \Delta x) - E(\mathbf{R_{i,d}} - \Delta x)}{2\Delta x}$$
 
-for each atom $i$ and Cartesian direction $d \in \{x, y, z\}$. Each call requires $2 \times N_\text{atoms} \times 3$ full SCF calculations — for $H_2O$, that is **18 SCF calls per step**.
+for each atom $i$ and Cartesian direction $d \in \{x, y, z\}$. Each call requires $2 \times N_\text{atoms} \times 3$ full SCF calculations — for $H_2O$, that is **18 SCF calls per step**. This is the dominant cost of the simulation. In the sequential NumPy implementation these run one after another. Correctly decomposing this stage is therefore where the largest performance gains are expected.
 
 **Code:** 
 
