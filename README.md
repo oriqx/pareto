@@ -22,7 +22,9 @@ You write Python. The SDK traces your operations into an IR graph. You call `pre
 import os
 import uniqx
 
-client = uniqx.connect(os.environ["UNIQX_GATEWAY"], api_key=os.environ.get("UNIQX_API_KEY"))
+GATEWAY = os.environ.get("UNIQX_GATEWAY", "api.oriqx.com:443")
+uniqx.login(os.environ["UNIQX_API_KEY"], gateway=GATEWAY)  # persists creds to ~/.config/uniqx
+client = uniqx.connect(GATEWAY)
 module = my_workload(spec)             # traces — does not execute
 options = uniqx.preflight(module, client=client)
 print(options.summary())                # the Pareto table
@@ -44,7 +46,7 @@ Two steps before any code runs: **register**, then **export your API key**.
 1. Open [app.oriqx.com](https://app.oriqx.com) and register with the invite code your organiser handed you (format: `hackathon-<tier>-XXXXXXXX`). A default API key is minted for you automatically — you'll reveal it in step 3.
 2. **Confirm registration via the email link** to activate the account — you cannot sign in until you click through.
 3. Sign in at [app.oriqx.com](https://app.oriqx.com), open the **Downloads** page in the sidebar, and click **"Lost your key? Regenerate"**. The new key (`uxk_...`) is shown exactly once — copy it immediately. Regenerating rotates the auto-minted default; any open Studio workspaces will need a refresh to pick up the new value.
-4. Use that key everywhere: in the wheel-index URL (below) and as the `api_key=` argument to `uniqx.connect()` in your code.
+4. Use that key everywhere: in the wheel-index URL (below) and as the argument to `uniqx.login()` in your code (the first cell of every starter calls it; the key persists to `~/.config/uniqx/credentials.json` so you only need it in env for the very first run).
 
 Full walkthrough: [docs.oriqx.com/getting-started-hackathon](https://docs.oriqx.com/getting-started-hackathon).
 
@@ -58,7 +60,7 @@ pip install --extra-index-url "https://uniqx:${UNIQX_API_KEY}@wheels.oriqx.com/s
 pip install -e ".[all]"                  # pareto + baseline extras (PySCF, SciPy, ASE)
 ```
 
-The key authenticates two things: pulling the wheel from the private index (URL embedding above), and authenticating every gateway call (passed to `uniqx.connect(..., api_key=...)` in the starter notebooks).
+The key authenticates two things: pulling the wheel from the private index (URL embedding above), and authenticating every gateway call (passed once to `uniqx.login()` in the first cell of every starter notebook — after that the SDK reads it from `~/.config/uniqx/credentials.json`).
 
 Your organiser will tell you the gateway target. Set it in the same shell when you have it:
 

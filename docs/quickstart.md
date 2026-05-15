@@ -44,14 +44,13 @@ import os
 import uniqx
 
 print("uniqx", uniqx.__version__)
-client = uniqx.connect(
-    os.environ.get("UNIQX_GATEWAY", "localhost:50050"),
-    api_key=os.environ.get("UNIQX_API_KEY"),
-)
+GATEWAY = os.environ.get("UNIQX_GATEWAY", "api.oriqx.com:443")
+uniqx.login(os.environ["UNIQX_API_KEY"], gateway=GATEWAY)  # persists to ~/.config/uniqx
+client = uniqx.connect(GATEWAY)
 print("connected:", client is not None)
 ```
 
-If `connect()` raises `UNAUTHENTICATED`, your key is wrong, expired, or your account is not yet email-confirmed. Go back to step 1.
+`uniqx.login()` writes the key (chmod 0600) to `~/.config/uniqx/credentials.json` and sets the in-process env, so subsequent notebook kernels won't need `UNIQX_API_KEY` in their shell — they pick it up from the credentials file. If `login()` raises `KeyError`, you forgot to `export UNIQX_API_KEY`. If `connect()` raises `UNAUTHENTICATED`, the key is wrong, expired, or your account is not yet email-confirmed — back to step 1.
 
 ## 3. Run a starter notebook
 

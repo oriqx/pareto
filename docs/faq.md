@@ -20,10 +20,13 @@ Either you have not redeemed an invite code, or your tier has exhausted its budg
 ## Connecting
 
 **`connect()` raises `UNAUTHENTICATED` or `PERMISSION_DENIED`.**
-You did not pass `api_key=` to `uniqx.connect()`, or the key is wrong. The starter notebooks read it from `UNIQX_API_KEY`; confirm the env var is set in the shell that launched Jupyter (not just in `.bashrc`).
+You never ran `uniqx.login()` (or never exported `UNIQX_API_KEY` before the first run), or the stored key is wrong/expired. The first cell of every starter notebook calls `uniqx.login(os.environ["UNIQX_API_KEY"], gateway=...)`, which writes the key to `~/.config/uniqx/credentials.json` (chmod 0600) and sets the in-process env. After that first run the env var is no longer required — subsequent kernels read the credentials file. Re-export `UNIQX_API_KEY` and re-run the first cell to refresh.
+
+**`login()` raises `KeyError: 'UNIQX_API_KEY'`.**
+You haven't exported the key yet. Either `export UNIQX_API_KEY=uxk_...` in the shell that launched Jupyter (not just in `.bashrc`), or run `uniqx login uxk_...` from the terminal once — the notebook will then pick it up from the credentials file.
 
 **`connect()` raises `UNAVAILABLE`.**
-Confirm `UNIQX_GATEWAY` is set. Production is `api.oriqx.com:443`, staging is `dev-api.oriqx.com:443`. If you're running a local gateway, it's typically `localhost:50050` (no API key required for the local gateway).
+The default gateway in the starters is `api.oriqx.com:443` (production). Override via `export UNIQX_GATEWAY=…` if your organiser pointed you at staging (`dev-api.oriqx.com:443`) or a local stack (`localhost:50050`). The local gateway runs with `UNIQX_AUTH_OPTIONAL=1` so the `uniqx.login()` call is a no-op there — you can leave it in.
 
 **The notebook submits but `get()` times out.**
 Default timeout is 300 s. For large workloads pass `timeout=None` or a longer value: `uniqx.get(job_id, client=client, timeout=600)`.
